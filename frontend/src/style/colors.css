@@ -1,0 +1,13 @@
+:root {
+  --aside: #060122;
+  --aside-darker: #040016;
+  --table-header: linear-gradient(to right, #3db0d3, #b0e3f1);
+  --table-row: #f0faff;
+  --table-footer: linear-gradient(to right, #3db0d3, #b0e3f1);
+  --bottom-line-darker: #cdcdcd;
+  --bottom-line: #e6e6e6;
+  --border-input: #cdcdcd;
+  --input-focus: #676767;
+  --del: rgb(244, 20, 64);
+  --edit: #fcbc0e;
+}

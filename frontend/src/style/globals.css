@@ -1,0 +1,268 @@
+@import url("table.css");
+@import url("loading.css");
+@import url("sidebar.css");
+@import url("input.css");
+@import url("form.css");
+@import url("buttons.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sarabun", sans-serif;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.content {
+  width: 80%;
+  padding: 20px 80px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  animation-name: fade;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.header {
+  margin-top: 30px;
+
+  .parent-of-icon .icon {
+    translate: 0 3px;
+    font-size: 30px;
+    margin-right: 5px;
+  }
+
+  .title {
+    display: inline;
+    font-size: 32px;
+  }
+
+  .bottom-line {
+    margin-top: 14px;
+    width: 70%;
+    height: 1.5px;
+    background: linear-gradient(
+      to right,
+      var(--bottom-line-darker),
+      var(--bottom-line),
+      transparent
+    );
+  }
+}
+
+#about {
+  overflow: hidden;
+
+  img {
+    width: 60%;
+    height: 400px;
+    margin-inline: auto;
+  }
+
+  article {
+    text-wrap: balance;
+    margin-top: 20px;
+    width: auto;
+    height: min-content;
+    font-size: 17px;
+    letter-spacing: 0.4px;
+    line-height: 32px;
+    user-select: auto;
+  }
+
+  ol {
+    margin: 20px 0 20px 40px;
+  }
+}
+
+#download {
+  p {
+    margin-top: 30px;
+    font-size: 17px;
+  }
+
+  img {
+    width: 350px;
+    height: 350px;
+    margin: 50px auto 20px;
+  }
+
+  a {
+    margin: 40px auto;
+    transition: scale 250ms ease-in-out;
+    &:active {
+      scale: 93%;
+    }
+
+    button {
+      width: 260px;
+      height: 65px;
+      border-radius: 5px;
+      border: none;
+      font-size: 19px;
+      cursor: pointer;
+      background: linear-gradient(to right, #647bff, #1e58f7);
+      box-shadow: 0 10px 23px 1px rgb(163, 163, 163);
+      color: white;
+
+      .parent-of-icon .icon {
+        transform: translateY(3px);
+      }
+    }
+  }
+}
+
+#connection-failed {
+  animation: fade 500ms ease-in-out 1;
+  width: auto;
+  margin-inline: auto;
+
+  img {
+    width: 500px;
+    height: 460px;
+  }
+
+  h3 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+#delete,
+#edit,
+#search {
+  form {
+    .input-field {
+      height: 120px;
+      margin-bottom: 50px;
+    }
+
+    .btn-submit {
+      margin: auto;
+
+      .parent-of-icon .icon {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .waiting-to-search {
+    margin-top: 120px;
+    width: auto;
+    margin-inline: auto;
+
+    img {
+      display: block;
+      width: 500px;
+      height: 350px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-top: 50px;
+      text-align: center;
+    }
+  }
+}
+
+.book-card {
+  width: 420px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(to bottom, #56b3d2, #247396, #278eb3);
+  border-radius: 19px;
+  box-shadow: -1px 6.5px 26px 5.5px #dddddd;
+  .parent-of-card-img {
+    width: auto;
+    margin: auto;
+
+    .card-img {
+      width: 150px;
+      height: 100%;
+    }
+    .no-img {
+      width: 250px;
+      height: 100%;
+      mix-blend-mode: darken;
+    }
+  }
+
+  .line {
+    margin-block: 20px;
+    width: 100%;
+    height: 1px;
+    background: #454545;
+  }
+
+  .card-details {
+    width: 100%;
+
+    h3 {
+      color: #eff9fc;
+      font-weight: normal;
+      line-height: 39px;
+      font-style: italic;
+      span {
+        font-style: normal;
+        font-weight: 600;
+        margin-left: 15px;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+}
+
+.book-card + .btn-delete {
+  margin: 20px auto 0;
+}
+
+.book-card + .btn-delete + footer {
+  margin-top: 30px;
+}
+
+#not-fount {
+  margin-top: 10px;
+  width: 100%;
+  height: 100vh;
+  img {
+    width: 570px;
+    height: 500px;
+    margin-inline: auto;
+  }
+  h2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .link {
+    margin-top: 20px;
+    color: blue;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import url("colors.css");
+
+form {
+  width: auto;
+
+  .grid-container {
+    width: auto;
+    display: grid;
+    padding: 30px 10px 0;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 5px 30px;
+
+    .grid-item {
+      height: 150px;
+    }
+
+    input[id="remain"],
+    input[id="productPrice"],
+    input[id="ISBN"] {
+      &:out-of-range,
+      :invalid {
+        border-color: red;
+      }
+    }
+
+    input[id="productName"] {
+      &:focus:invalid {
+        border-color: red;
+      }
+    }
+  }
+
+  .parent-of-button,
+  footer {
+    margin-top: 30px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+
+    .btn-submit,
+    .btn-edit {
+      width: 250px;
+    }
+  }
+}

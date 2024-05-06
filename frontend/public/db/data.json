@@ -1,0 +1,66 @@
+[
+    {
+        "productName": "พัฒนาระบบงานด้วย VBA บน Excel",
+        "img": "https://developerthai.com/covers/vba_excel.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160851379,
+        "productPrice": 295,
+        "remain": 100
+    },
+    {
+        "productName": "รวมพื้นฐานการสร้าง WEB",
+        "img": "https://developerthai.com/covers/web_basics.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160851140,
+        "productPrice": 345,
+        "remain": 100
+    },
+    {
+        "productName": "พัฒนาแอปแบบ Multi-Platform ด้วย Flutter",
+        "img": "https://developerthai.com/covers/flutter.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160848645,
+        "productPrice": 350,
+        "remain": 100
+    },
+    {
+        "productName": "การเขียนโปรแกรมภาษา C ขั้นพื้นฐาน",
+        "img": "https://developerthai.com/covers/c_lang.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160847426,
+        "productPrice": 295,
+        "remain": 100
+    },
+    {
+        "productName": "เขียนโปรแกรมด้วยภาษา Python ฉบับเพิ่มเติม กับ PyQt และ Pygame",
+        "img": "https://developerthai.com/covers/py_plus.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160846238,
+        "productPrice": 285,
+        "remain": 100
+    },
+    {
+        "productName": "การเขียนโปรแกรมด้วย Python ฉบับพื้นฐาน",
+        "img": "https://developerthai.com/covers/py_basic.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160845156,
+        "productPrice": 340,
+        "remain": 100
+    },
+    {
+        "productName": "พัฒนา Web App แบบ Responsive ด้วย Bootstrap5 ร่วมกับ Vue.js และ Node.js",
+        "img": "https://developerthai.com/covers/bs5_vn.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160843756,
+        "productPrice": 350,
+        "remain": 100
+    },
+    {
+        "productName": "พัฒนา Application ด้วย React และ React Native",
+        "img": "https://developerthai.com/covers/react.png",
+        "author": "บัญชา ปะสีละเตสัง",
+        "ISBN": 9786160843220,
+        "productPrice": 330,
+        "remain": 100
+    }
+]

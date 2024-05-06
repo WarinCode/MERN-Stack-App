@@ -1,0 +1,13 @@
+.parent-loading {
+  height: 100%;
+  width: 100%;
+  margin: 50px auto;
+  pointer-events: none;
+  .loading {
+    margin: 40px auto;
+  }
+  h1 {
+    text-align: center;
+    font-size: 30px;
+  }
+}

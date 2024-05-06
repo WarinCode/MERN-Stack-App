@@ -1,0 +1,150 @@
+@import url("animation.css");
+@import url("colors.css");
+
+table {
+  width: 100%;
+  margin-inline: auto;
+  animation-name: fade;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  table-layout: auto;
+
+  tr,
+  td,
+  th {
+    border: 2.4px solid #141414;
+    cursor: default;
+  }
+
+  border-collapse: collapse;
+  margin-top: 2rem;
+
+  caption {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    cursor: default;
+  }
+
+  thead {
+    width: 100%;
+    height: 60px;
+
+    tr {
+      width: 100%;
+      background: var(--table-header);
+      color: white;
+
+      :nth-child(1) {
+        width: 5%;
+      }
+
+      :nth-child(2),
+      :nth-child(3) {
+        width: 25%;
+      }
+
+      :where(:nth-child(4), :nth-child(5), :nth-child(6)) {
+        width: 10%;
+      }
+
+      :nth-child(7) {
+        width: 20%;
+      }
+
+      th {
+        padding: 10px;
+        font-size: 23px;
+        cursor: default;
+      }
+    }
+  }
+
+  tbody {
+    tr:nth-child(1) {
+      border-top-width: 0;
+
+      td {
+        border-top-width: 0;
+      }
+    }
+
+    tr:nth-child(even) {
+      background: var(--table-row);
+    }
+
+    tr {
+      height: min-content;
+
+      td {
+        padding: 10px;
+      }
+
+      .product-name {
+        text-align: start;
+        font-size: 19px;
+        font-weight: bold;
+        text-indent: 2px;
+        text-wrap: balance;
+      }
+
+      .parent-of-product-img {
+        .product-img {
+          display: block;
+          width: 150px;
+          height: 100%;
+          margin: auto;
+          object-fit: cover;
+        }
+
+        .no-img {
+          width: 250px;
+          height: 100%;
+        }
+      }
+
+      .ISBN {
+        text-wrap: wrap;
+      }
+
+      :where(.product-price, .ISBN, .product-remain, .number) {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+
+  tfoot {
+    background: var(--table-footer);
+
+    tr {
+      td {
+        color: white;
+        padding: 10px;
+        height: 50px;
+        font-size: 1.2rem;
+        cursor: default;
+        text-align: center;
+      }
+    }
+  }
+}
+
+table + footer {
+  margin-top: 40px;
+  position: relative;
+
+  .btn-next,
+  .btn-back {
+    position: absolute;
+  }
+
+  .btn-back {
+    left: 0;
+  }
+
+  .btn-next {
+    right: 0;
+  }
+}
