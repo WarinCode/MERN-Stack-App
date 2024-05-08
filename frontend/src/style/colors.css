@@ -1,9 +1,9 @@
 :root {
   --aside: #060122;
   --aside-darker: #040016;
-  --table-header: linear-gradient(to right, #3db0d3, #b0e3f1);
+  --table-header: #5380ea;
   --table-row: #f0faff;
-  --table-footer: linear-gradient(to right, #3db0d3, #b0e3f1);
+  --table-footer: #5380ea;
   --bottom-line-darker: #cdcdcd;
   --bottom-line: #e6e6e6;
   --border-input: #cdcdcd;

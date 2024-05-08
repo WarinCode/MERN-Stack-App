@@ -10,6 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Sarabun", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -183,7 +184,7 @@ a:link {
 }
 
 .book-card {
-  width: 420px;
+  width: 400px;
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -199,13 +200,12 @@ a:link {
     margin: auto;
 
     .card-img {
-      width: 150px;
+      width: 200px;
       height: 100%;
     }
     .no-img {
       width: 250px;
       height: 100%;
-      mix-blend-mode: darken;
     }
   }
 

@@ -78,13 +78,15 @@ const Table = () => {
     }
   }, [isConnectionFailed]);
 
-  const handleNextPage = () => {
+  const handleNextPage = useCallback(() => {
     setIndex((prevIndex) => prevIndex + 1);
-  };
+    // scroll(0, 0);
+  }, []);
 
-  const handlePreviousPage = () => {
+  const handlePreviousPage = useCallback(() => {
     setIndex((prevIndex) => prevIndex - 1);
-  };
+    // scroll(0, 0);
+  }, []);
 
   const allRemainingBooks = useMemo(() => {
     return [...books.flat().map((book) => book.remain)].reduce(
