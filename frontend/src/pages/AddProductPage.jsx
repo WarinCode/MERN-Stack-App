@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import Container from "../components/Container";
 import GridContainer from "../components/GridContainer";
 import Content from "../components/Content";
@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import InputField from "../components/InputField";
 import Loading from "../components/Loading";
 import Button from "../components/Button";
-import { insertProduct } from "../utils/API";
+import { insert } from "../utils/API";
 import { FaBook } from "react-icons/fa6";
 import { MdOutlineAdd } from "react-icons/md";
 import { inputList, notificationSettings } from "../data/data";
@@ -25,7 +25,7 @@ const AddProductPage = () => {
     img: useRef(null),
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     const newBook = {
       productName: inputRef.productName.current.value,
@@ -36,7 +36,7 @@ const AddProductPage = () => {
       remain: parseInt(inputRef.remain.current.value),
     };
     setLoading(true);
-    const acknowledged = await insertProduct(
+    const acknowledged = await insert(
       import.meta.env.VITE_API_URL,
       "/insert",
       newBook
@@ -45,9 +45,11 @@ const AddProductPage = () => {
       setLoading(false);
       if (acknowledged) {
         toast.success("เพิ่มหนังสือใหม่สำเร็จ", notificationSettings);
+      } else {
+        toast.error("ไม่สามารถเพิ่มหนังสือให้ใหม่ได้โปรดกรอกข้อมูลอีกครั้ง!",  notificationSettings);
       }
     }, 1600);
-  };
+  }, []);
 
   return (
     <Container>

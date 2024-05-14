@@ -5,7 +5,7 @@ const headers = {
 }
 
 /*  function สำหรับการดึงข้อมูลจากฐานข้อมูลใช้ใน method GET */
-export const fetchProduct = async (apiUrl, path) => {
+export const fetchBook = async (apiUrl, path) => {
   try {
     const response = await fetch(`${apiUrl}${path}`);
     const data = await response.json();
@@ -17,7 +17,7 @@ export const fetchProduct = async (apiUrl, path) => {
 };
 
 /* function สำหรับการเพิ่มข้อมูลในฐานข้อมูลใช้ใน method POST  */
-export const insertProduct = async (apiUrl, path, body) => {
+export const insert = async (apiUrl, path, body) => {
   const options = {
     method: "POST",
     ...headers,
@@ -34,7 +34,7 @@ export const insertProduct = async (apiUrl, path, body) => {
 };
 
 /* function สำหรับการอัปเดตแก้ไขสินค้าในฐานข้อมูลใช้ใน method PUT */
-export const updateProduct = async (apiUrl, path, body) => {
+export const update = async (apiUrl, path, body) => {
   const options = {
     method: "PUT",
     ...headers,
@@ -51,7 +51,7 @@ export const updateProduct = async (apiUrl, path, body) => {
 };
 
 /* function สำหรับการลบข้อมูลสินค้าในฐานข้อมูลใช้ใน method DELETE */
-export const deleteProduct = async (apiUrl, path) => {
+export const remove = async (apiUrl, path) => {
   const options = {
     method: "DELETE",
     ...headers,
@@ -67,7 +67,7 @@ export const deleteProduct = async (apiUrl, path) => {
 };
 
 /* function สำหรับการตรวจสอบสินค้าว่ามีอยู่ในฐานข้อมูลหรือไม่ใช้ใน method GET */
-export const searchProduct = async (apiUrl, path) => {
+export const search = async (apiUrl, path) => {
   try {
     const response = await fetch(`${apiUrl}${path}`);
     const data = await response.json();
@@ -83,5 +83,5 @@ export const searchProduct = async (apiUrl, path) => {
 };
 
 export const uploadFile = async (apiUrl, path, body) => {
-  return await insertProduct(apiUrl, path, body);
+  return await insert(apiUrl, path, body);
 }

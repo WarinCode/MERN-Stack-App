@@ -11,14 +11,14 @@ import Button from "../components/Button";
 import BackButton from "../components/BackButton";
 import WaitingToSearch from "../components/WaitingToSearch";
 import { inputList } from "../data/data";
-import { searchProduct, updateProduct } from "../utils/API";
+import { search, update } from "../utils/API";
 import { MdModeEdit } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { notificationSettings } from "../data/data";
 import { RiFileEditFill } from "react-icons/ri";
 
 const EditProductPage = () => {
-  const [product, setProduct] = useState({});
+  const [book, setBook] = useState({});
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -39,11 +39,11 @@ const EditProductPage = () => {
     e.preventDefault();
     setLoading(true);
     setText("กำลังค้นหา ...");
-    const productData = await searchProduct(
+    const bookData = await search(
       VITE_API_URL,
       `/search?ISBN=${ISBNNumber}`
     );
-    if (productData === null) {
+    if (bookData === null) {
       setSearchSuccessful(false);
       setTimeout(
         () =>
@@ -54,7 +54,7 @@ const EditProductPage = () => {
         1500
       );
     } else {
-      setProduct(productData);
+      setBook(bookData);
       setSearchSuccessful(true);
     }
     setTimeout(() => setLoading(false), 1300);
@@ -73,7 +73,7 @@ const EditProductPage = () => {
       author: inputRef.author.current.value,
       img: inputRef.img.current.value,
     };
-    const modifiedCount = await updateProduct(
+    const modifiedCount = await update(
       VITE_API_URL,
       "/update",
       updateBook
@@ -105,18 +105,18 @@ const EditProductPage = () => {
             />
             {searchSuccessful ? (
               <>
-                <form onSubmit={(e) => handleUpdate(e, product)}>
+                <form onSubmit={(e) => handleUpdate(e, book)}>
                   <GridContainer>
-                    {inputList.map((obj) => (
+                    {inputList.map((item) => (
                       <InputField
-                        key={obj.id}
+                        key={item.id}
                         className={"grid-item"}
-                        {...obj}
-                        inputRef={inputRef[obj.id]}
+                        {...item}
+                        inputRef={inputRef[item.id]}
                         setIsValid={setIsValid}
                         inputOptions={{
-                          defaultValue: product[obj.id],
-                          name: obj.id,
+                          defaultValue: book[item.id],
+                          name: item.id,
                         }}
                       />
                     ))}

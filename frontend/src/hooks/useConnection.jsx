@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useConnectionDB() {
+export default function useConnection() {
   const [connectionSuccessfully, setConnectionSuccessfully] = useState(false);
   const { VITE_API_URL } = import.meta.env;
 

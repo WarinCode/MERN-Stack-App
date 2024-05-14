@@ -7,15 +7,12 @@ import BookItem from "./BookItem";
 import NextButton from "./NextButton";
 import BackButton from "./BackButton";
 import OutStock from "./OutStock";
-import { fetchProduct } from "../utils/API";
+import { fetchBook } from "../utils/API";
 import { notificationSettings, headerCells } from "../data/data";
 import { ToastContainer, toast } from "react-toastify";
-import useConnectionDB from "../hooks/useConnectionDB";
 import uuid from "react-uuid";
 
 const Table = () => {
-  const ok = useConnectionDB();
-  console.log(ok)
   const [books, setBooks] = useState([]);
   const [index, setIndex] = useState(0);
   const [numbers, setNumbers] = useState([]);
@@ -51,7 +48,7 @@ const Table = () => {
 
   const firstRenderComponent = useCallback(async () => {
     setLoading(true);
-    const data = await fetchProduct(VITE_API_URL, "/product");
+    const data = await fetchBook(VITE_API_URL, "/product");
     if (data === null) {
       setIsConnectionFailed(true);
     } else {

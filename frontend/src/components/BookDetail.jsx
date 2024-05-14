@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { string, number } from "prop-types";
 import { handleError } from "../utils/functions";
 
-const Book = ({
+const BookDetail = ({
   _id,
   productName,
   productPrice,
@@ -48,7 +48,7 @@ const Book = ({
   );
 };
 
-Book.propTypes = {
+BookDetail.propTypes = {
   _id: string.isRequired,
   productName: string.isRequired,
   productPrice: number.isRequired,
@@ -58,4 +58,4 @@ Book.propTypes = {
   img: string.isRequired,
 };
 
-export default Book;
+export default BookDetail;

@@ -5,18 +5,18 @@ import Content from "../components/Content";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import Searchbar from "../components/Searchbar";
-import Book from "../components/Book";
+import BookDetail from "../components/BookDetail";
 import Button from "../components/Button";
 import BackButton from "../components/BackButton";
 import WaitingToSearch from "../components/WaitingToSearch";
-import { searchProduct, deleteProduct } from "../utils/API";
+import { search, remove } from "../utils/API";
 import { ToastContainer, toast } from "react-toastify";
 import { notificationSettings } from "../data/data";
 import { MdFolderDelete } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const DeleteProductPage = () => {
-  const [product, setProduct] = useState({});
+  const [book, setBook] = useState({});
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -30,11 +30,11 @@ const DeleteProductPage = () => {
     e.preventDefault();
     setLoading(true);
     setText("กำลังค้นหา ...");
-    const productData = await searchProduct(
+    const bookData = await search(
       VITE_API_URL,
       `/search?ISBN=${ISBNNumber}`
     );
-    if (productData === null) {
+    if (bookData === null) {
       setSearchSuccessful(false);
       setTimeout(
         () =>
@@ -45,7 +45,7 @@ const DeleteProductPage = () => {
         1500
       );
     } else {
-      setProduct(productData);
+      setBook(bookData);
       setSearchSuccessful(true);
     }
     setTimeout(() => setLoading(false), 1300);
@@ -55,7 +55,7 @@ const DeleteProductPage = () => {
     setLoading(true);
     setText("กำลังลบสินค้า ...");
     const path = `/delete-product/name=${product.productName}&ISBN=${product.ISBN}&id=${product._id}`;
-    const deletedCount = await deleteProduct(VITE_API_URL, path);
+    const deletedCount = await remove(VITE_API_URL, path);
     setTimeout(() => {
       if (deletedCount === 1) {
         setSearchSuccessful(false);
@@ -83,13 +83,13 @@ const DeleteProductPage = () => {
             />
             {searchSuccessful ? (
               <>
-                <Book {...product} />
+                <BookDetail {...book} />
                 <Button
                   className={"btn-delete"}
                   text={"ลบสินค้า"}
                   icon={<RiDeleteBin5Fill className="icon" />}
                   isValid={isValid}
-                  handleClick={() => handleDelete(product)}
+                  handleClick={() => handleDelete(book)}
                 />
                 <footer>
                   <BackButton handleClick={() => setSearchSuccessful(false)} />

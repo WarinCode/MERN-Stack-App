@@ -5,10 +5,10 @@ import Sidebar from "../components/Sidebar";
 import Searchbar from "../components/Searchbar";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
-import Book from "../components/Book";
+import BookDetail from "../components/BookDetail";
 import WaitingToSearch from "../components/WaitingToSearch";
 import BackButton from "../components/BackButton";
-import { searchProduct } from "../utils/API";
+import { search } from "../utils/API";
 import { MdSearch } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 import { notificationSettings } from "../data/data";
@@ -25,7 +25,7 @@ const SearchProductPage = () => {
     e.preventDefault();
     setLoading(true);
     const path = `/search?ISBN=${ISBNRef.current.value}`;
-    const data = await searchProduct(VITE_API_URL, path);
+    const data = await search(VITE_API_URL, path);
     setTimeout(() => {
       if (data === null) {
         setSearchSuccessful(false);
@@ -54,7 +54,7 @@ const SearchProductPage = () => {
             />
             {searchSuccessful ? (
               <>
-                <Book {...book} />
+                <BookDetail {...book} />
                 <footer>
                   <BackButton
                     text={"กลับไปค้นหา"}

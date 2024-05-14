@@ -12,12 +12,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 import { ImTable2 } from "react-icons/im";
 import { RiPlayListAddFill } from "react-icons/ri";
-import {
-  MdOutlineEditNote,
-  MdOutlineAttachMoney,
-  MdManageSearch,
-  MdHistory,
-} from "react-icons/md";
+import { MdOutlineEditNote, MdManageSearch } from "react-icons/md";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { VscJson } from "react-icons/vsc";
 import { Bounce } from "react-toastify";
