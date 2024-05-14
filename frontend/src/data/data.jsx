@@ -83,23 +83,18 @@ export const routes = [
 
 export const dropdownList = [
   {
-    title: "ขายสินค้า",
-    icon: <MdOutlineAttachMoney className="icon sale-icon" />,
-    path: "/sale",
-  },
-  {
     title: "ค้นหาสินค้า",
     icon: <MdManageSearch className="icon search-icon" />,
     path: "/search",
   },
   {
     title: "ดูตารางสินค้า",
-    icon: <ImTable2 className="icon" />,
+    icon: <ImTable2 className="icon table-icon" />,
     path: "/view-table",
   },
   {
     title: "เพิ่มรายการสินค้า",
-    icon: <RiPlayListAddFill className="icon" />,
+    icon: <RiPlayListAddFill className="icon add-icon" />,
     path: "/add-product",
   },
   {
@@ -109,17 +104,12 @@ export const dropdownList = [
   },
   {
     title: "ลบรายการสินค้า",
-    icon: <BsFillTrash3Fill className="icon" />,
+    icon: <BsFillTrash3Fill className="icon delete-icon" />,
     path: "/delete-product",
   },
   {
-    title: "บันทึกการขายสินค้า",
-    icon: <MdHistory className="icon" />,
-    path: "/log",
-  },
-  {
     title: "นำเข้าไฟล์ข้อมูล JSON",
-    icon: <VscJson className="icon" />,
+    icon: <VscJson className="icon input-icon" />,
     path: "/input-json-file",
   },
 ];

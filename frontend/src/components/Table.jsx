@@ -6,12 +6,16 @@ import HeaderCells from "./HeaderCells";
 import BookItem from "./BookItem";
 import NextButton from "./NextButton";
 import BackButton from "./BackButton";
+import OutStock from "./OutStock";
 import { fetchProduct } from "../utils/API";
 import { notificationSettings, headerCells } from "../data/data";
 import { ToastContainer, toast } from "react-toastify";
+import useConnectionDB from "../hooks/useConnectionDB";
 import uuid from "react-uuid";
 
 const Table = () => {
+  const ok = useConnectionDB();
+  console.log(ok)
   const [books, setBooks] = useState([]);
   const [index, setIndex] = useState(0);
   const [numbers, setNumbers] = useState([]);
@@ -103,6 +107,8 @@ const Table = () => {
     return <Loading text={"กำลังโหลดข้อมูล ..."} />;
   } else if (isConnectionFailed) {
     return <ConnectionFailedPage />;
+  } else if(books.length === 0){
+    return <OutStock/>;
   } else {
     return (
       <>

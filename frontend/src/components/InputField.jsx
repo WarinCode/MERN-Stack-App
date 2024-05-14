@@ -57,11 +57,23 @@ const InputField = ({
             isError: true,
           };
           return state;
+        } else if (isEmptyString(inputRef.current.value)) {
+          state = {
+            message: "ต้องตั้งราคาหนังสือ!",
+            isError: true,
+          };
+          return state;
         } else {
           return initialState;
         }
       case "check-ISBN":
-        if (inputRef.current.value.length !== 13) {
+        if (isEmptyString(inputRef.current.value)) {
+          state = {
+            message: "ต้องใส่หมายเลข ISBN!",
+            isError: true,
+          };
+          return state;
+        } else if (inputRef.current.value.length !== 13) {
           state = {
             message: "หมายเลข ISBN ต้องมีจำนวนตัวเลขทั้งหมด 13 หลักเท่านั้น!",
             isError: true,
@@ -80,6 +92,12 @@ const InputField = ({
         } else if (parseInt(inputRef.current.value) > 500) {
           state = {
             message: "จำนวนหนังสือที่ขายสามารถมีได้ไม่เกิน 500 เล่มเท่านั้น!",
+            isError: true,
+          };
+          return state;
+        } else if (isEmptyString(inputRef.current.value)) {
+          state = {
+            message: "ต้องกำหนดจำนวนสินค้า!",
             isError: true,
           };
           return state;
@@ -125,6 +143,16 @@ const InputField = ({
         } else {
           return initialState;
         }
+      case "check-jsonFile":
+        if (!String(inputRef.current.value).includes(".json")) {
+          state = {
+            message: "ต้องอัปโหลดไฟล์ที่เป็น .json เท่านั้น!",
+            isError: true,
+          };
+          return state;
+        } else {
+          return initialState;
+        }
       default:
         return initialState;
     }
@@ -132,26 +160,32 @@ const InputField = ({
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (state.isError) setIsValid(false);
-    else setIsValid(true);
+    setIsValid(state.isError ? false : true);
   }, [state]);
 
   return (
     <div className={`input-field ${className}`}>
       <label htmlFor={id}>{labelname}</label>
       <input
-        className={`${state.isError ? "input-error" : ""}`}
+        className={state.isError ? "input-error" : ""}
         type={inputType}
         id={id}
         placeholder={placeholder}
         ref={inputRef}
+        error={initialState.isError ? "true" : "false"}
         onFocus={() => dispatch({ type: `check-${id}` })}
         onChange={() => dispatch({ type: `check-${id}` })}
         onBlur={() => {
-          if (isEmptyString(inputRef.current.value)) {
+          if (
+            isEmptyString(inputRef.current.value) &&
+            (id === "author" || id === "img")
+          ) {
             dispatch({ type: "" });
           }
         }}
+        autoComplete="off"
+        autoSave="false"
+        aria-autocomplete="none"
         {...inputOptions}
       />
       <ErrorMessage {...state} />

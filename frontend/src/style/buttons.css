@@ -33,6 +33,8 @@
 }
 
 button[disabled] {
+  user-select: none;
+  cursor: none;
   pointer-events: none;
   background: linear-gradient(to right, #9e9e9e, #c4c4c4);
 }

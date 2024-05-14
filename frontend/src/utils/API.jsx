@@ -1,3 +1,9 @@
+const headers = {
+  headers: {
+    "Content-Type": "application/json",
+  }
+}
+
 /*  function สำหรับการดึงข้อมูลจากฐานข้อมูลใช้ใน method GET */
 export const fetchProduct = async (apiUrl, path) => {
   try {
@@ -14,9 +20,7 @@ export const fetchProduct = async (apiUrl, path) => {
 export const insertProduct = async (apiUrl, path, body) => {
   const options = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    ...headers,
     body: JSON.stringify(body),
   };
   try {
@@ -33,9 +37,7 @@ export const insertProduct = async (apiUrl, path, body) => {
 export const updateProduct = async (apiUrl, path, body) => {
   const options = {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    ...headers,
     body: JSON.stringify(body),
   };
   try {
@@ -52,9 +54,7 @@ export const updateProduct = async (apiUrl, path, body) => {
 export const deleteProduct = async (apiUrl, path) => {
   const options = {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    ...headers,
   };
   try {
     const response = await fetch(`${apiUrl}${path}`, options);
@@ -81,3 +81,7 @@ export const searchProduct = async (apiUrl, path) => {
     return null;
   }
 };
+
+export const uploadFile = async (apiUrl, path, body) => {
+  return await insertProduct(apiUrl, path, body);
+}

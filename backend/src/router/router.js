@@ -1,7 +1,8 @@
-import { Router } from "express";
+import { Router, urlencoded } from "express";
 import { client } from "../database/connect.js";
 import { configDotenv } from "dotenv";
 import { ObjectId } from "mongodb";
+import { readJsonFile } from "../utils/index.js";
 
 configDotenv();
 const { DATABASE_NAME, COLLECTION_NAME } = process.env;
@@ -96,6 +97,42 @@ router.get("/api/search", async ({ query }, res, next) => {
   } catch (e) {
     console.error(e?.name, e?.message);
     res.end();
+  } finally {
+    await client.close();
+  }
+});
+
+// router.post("/api/upload", async (req, res, next) => {
+//   try {
+//     await client.connect();
+//     const db = client.db(DATABASE_NAME);
+//     const collection = db.collection(COLLECTION_NAME);
+//     readJsonFile(req.body.jsonFile);
+//     console.log(res.body);
+//     res.end();
+//   } catch (e) {
+//     console.error(e?.name, e?.message);
+//     res.end();
+//   } finally {
+//     await client.close();
+//   }
+// });
+
+router.get("/api/connect", async (req, res, next) => {
+  try {
+    await client.connect();
+    res.type("json").json({
+      databaseStatus: {
+        ok: true,
+      },
+    });
+  } catch (e) {
+    console.error(e?.name, e?.message);
+    res.type("json").json({
+      databaseStatus: {
+        ok: false,
+      },
+    });
   } finally {
     await client.close();
   }

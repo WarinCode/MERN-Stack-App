@@ -4,9 +4,10 @@ const ErrorMessage = ({ isError, message }) => {
   return (
     <input
       className="error-msg"
-      type={isError ? "text" : "hidden"}
+      type={"text"}
+      placeholder={isError && message}
       disabled
-      placeholder={message}
+      readOnly
     />
   );
 };

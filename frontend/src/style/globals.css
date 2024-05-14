@@ -266,3 +266,26 @@ a:link {
     }
   }
 }
+
+#upload {
+  p {
+    margin-top: 20px;
+    font-size: 17px;
+    letter-spacing: 0.4px;
+
+    .link {
+      color: blue;
+      margin-inline: 0 5px;
+      &:hover {
+        text-decoration: underline;
+        color: blueviolet;
+      }
+    }
+  }
+
+  form {
+    .btn-submit {
+      margin-inline: auto;
+    }
+  }
+}
