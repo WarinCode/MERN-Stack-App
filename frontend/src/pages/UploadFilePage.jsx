@@ -11,27 +11,11 @@ import { uploadFile } from "../utils/API";
 import { BsFiletypeJson } from "react-icons/bs";
 import { FaUpload } from "react-icons/fa";
 
-const JSONFileImportPage = () => {
+const UploadFilePage = () => {
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const fileRef = useRef(null);
-
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    // setLoading(true);
-    const jsonFile = fileRef.current.value;
-    // await uploadFile(
-    //   import.meta.env.VITE_API_URL,
-    //   "/upload",
-    //   { file: new URL(jsonFile) }
-    // );
-    // setTimeout(() => {
-    //   if (acknowledged) {
-    //   } else {
-    //   }
-    //   setLoading(false);
-    // }, 1300);
-  }, []);
+  const { VITE_API_URL } = import.meta.env;
 
   return (
     <Container>
@@ -47,19 +31,25 @@ const JSONFileImportPage = () => {
             />
             <p>
               ให้อัปโหลดไฟล์ที่ดาวน์โหลดจากหน้า{" "}
-              <Link to={"/download"} className="link">ดาวโหลด์ไฟล์ฐานข้อมูล</Link>
+              <Link to={"/download"} className="link">
+                ดาวโหลด์ไฟล์ฐานข้อมูล
+              </Link>
               แล้วนำไฟล์นั้นอัปโหลดเข้าสู่ฐานข้อมูล
             </p>
-            <form onSubmit={handleSubmit}>
+            <form
+              method="POST"
+              action={VITE_API_URL + "/upload"}
+              enctype="multipart/form-data"
+            >
               <InputField
                 inputType={"file"}
-                id={"jsonFile"}
+                id={"dbfile"}
                 placeholder={"อัปโหลดไฟล์"}
                 inputRef={fileRef}
                 setIsValid={setIsValid}
                 inputOptions={{
                   required: true,
-                  name: "jsonFile",
+                  name: "dbfile",
                   accept: ".json",
                 }}
               />
@@ -78,4 +68,4 @@ const JSONFileImportPage = () => {
   );
 };
 
-export default JSONFileImportPage;
+export default UploadFilePage;

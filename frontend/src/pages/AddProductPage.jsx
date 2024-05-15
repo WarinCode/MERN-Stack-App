@@ -46,7 +46,7 @@ const AddProductPage = () => {
       if (acknowledged) {
         toast.success("เพิ่มหนังสือใหม่สำเร็จ", notificationSettings);
       } else {
-        toast.error("ไม่สามารถเพิ่มหนังสือให้ใหม่ได้โปรดกรอกข้อมูลอีกครั้ง!",  notificationSettings);
+        toast.error("ไม่สามารถเพิ่มหนังสือให้ใหม่ได้โปรดกรอกข้อมูลใหม่อีกครั้ง!",  notificationSettings);
       }
     }, 1600);
   }, []);

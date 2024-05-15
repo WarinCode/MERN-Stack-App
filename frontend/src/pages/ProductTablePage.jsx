@@ -7,7 +7,7 @@ const ProductTablePage = () => {
   return (
     <Container>
       <Sidebar />
-      <Content>
+      <Content id={"table"}>
         <Table />
       </Content>
     </Container>

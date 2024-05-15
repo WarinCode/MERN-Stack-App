@@ -143,7 +143,7 @@ const InputField = ({
         } else {
           return initialState;
         }
-      case "check-jsonFile":
+      case "check-dbfile":
         if (!String(inputRef.current.value).includes(".json")) {
           state = {
             message: "ต้องอัปโหลดไฟล์ที่เป็น .json เท่านั้น!",
@@ -173,6 +173,11 @@ const InputField = ({
         placeholder={placeholder}
         ref={inputRef}
         error={initialState.isError ? "true" : "false"}
+        // onClick={() => {
+        //   if(inputRef.current.id === "dbfile"){
+        //     dispatch({ type: "" })
+        //   }
+        // }}
         onFocus={() => dispatch({ type: `check-${id}` })}
         onChange={() => dispatch({ type: `check-${id}` })}
         onBlur={() => {

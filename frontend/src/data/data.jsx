@@ -4,9 +4,7 @@ import AddProductPage from "../pages/AddProductPage";
 import EditProductPage from "../pages/EditProductPage";
 import DeleteProductPage from "../pages/DeleteProductPage";
 import FileDownloadPage from "../pages/FileDownloadPage";
-import ProductSalesPage from "../pages/ProductSalesPage";
-import ProductSalesHistoryPage from "../pages/ProductSalesHistoryPage";
-import JSONFileImportPage from "../pages/JSONFileImportPage";
+import UploadFilePage from "../pages/UploadFilePage";
 import SearchProductPage from "../pages/SearchProductPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
@@ -39,15 +37,15 @@ export const routes = [
     element: <ProductTablePage />,
   },
   {
-    path: "/add-product",
+    path: "/create",
     element: <AddProductPage />,
   },
   {
-    path: "/edit-product",
+    path: "/edit",
     element: <EditProductPage />,
   },
   {
-    path: "/delete-product",
+    path: "/delete",
     element: <DeleteProductPage />,
   },
   {
@@ -55,16 +53,8 @@ export const routes = [
     element: <FileDownloadPage />,
   },
   {
-    path: "/sale",
-    element: <ProductSalesPage />,
-  },
-  {
-    path: "/log",
-    element: <ProductSalesHistoryPage />,
-  },
-  {
-    path: "/input-json-file",
-    element: <JSONFileImportPage />,
+    path: "/upload",
+    element: <UploadFilePage />,
   },
   {
     path: "/search",
@@ -90,22 +80,22 @@ export const dropdownList = [
   {
     title: "เพิ่มรายการสินค้า",
     icon: <RiPlayListAddFill className="icon add-icon" />,
-    path: "/add-product",
+    path: "/create",
   },
   {
     title: "แก้ไขรายการสินค้า",
     icon: <MdOutlineEditNote className="icon edit-icon" />,
-    path: "/edit-product",
+    path: "/edit",
   },
   {
     title: "ลบรายการสินค้า",
     icon: <BsFillTrash3Fill className="icon delete-icon" />,
-    path: "/delete-product",
+    path: "/delete",
   },
   {
     title: "นำเข้าไฟล์ข้อมูล JSON",
     icon: <VscJson className="icon input-icon" />,
-    path: "/input-json-file",
+    path: "/upload",
   },
 ];
 

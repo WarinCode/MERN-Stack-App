@@ -6,7 +6,7 @@ import HeaderCells from "./HeaderCells";
 import BookItem from "./BookItem";
 import NextButton from "./NextButton";
 import BackButton from "./BackButton";
-import OutStock from "./OutStock";
+import Outstock from "./Outstock";
 import { fetchBook } from "../utils/API";
 import { notificationSettings, headerCells } from "../data/data";
 import { ToastContainer, toast } from "react-toastify";
@@ -56,6 +56,7 @@ const Table = () => {
       setBooks(firstArray);
       setNumbers(secondArray);
       setIsReady(true);
+      setIsConnectionFailed(false);
     }
     setTimeout(() => setLoading(false), 1300);
   }, []);
@@ -104,8 +105,8 @@ const Table = () => {
     return <Loading text={"กำลังโหลดข้อมูล ..."} />;
   } else if (isConnectionFailed) {
     return <ConnectionFailedPage />;
-  } else if(books.length === 0){
-    return <OutStock/>;
+  } else if (books.length === 0 && !isConnectionFailed) {
+    return <Outstock />;
   } else {
     return (
       <>

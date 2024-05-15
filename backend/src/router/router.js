@@ -1,12 +1,24 @@
-import { Router, urlencoded } from "express";
+import { Router } from "express";
 import { client } from "../database/connect.js";
 import { configDotenv } from "dotenv";
 import { ObjectId } from "mongodb";
-import { readJsonFile } from "../utils/index.js";
+import multer, { diskStorage } from "multer";
+import { readFile } from "fs/promises";
 
 configDotenv();
 const { DATABASE_NAME, COLLECTION_NAME } = process.env;
 const router = Router();
+
+const upload = multer({
+  storage: diskStorage({
+    destination: (req, file, callback) => {
+      callback(null, "src/database/uploads");
+    },
+    filename: (req, file, callback) => {
+      callback(null, file.fieldname + ".json");
+    },
+  }),
+});
 
 router.get("/api/product", async (req, res, next) => {
   try {
@@ -102,40 +114,33 @@ router.get("/api/search", async ({ query }, res, next) => {
   }
 });
 
-// router.post("/api/upload", async (req, res, next) => {
-//   try {
-//     await client.connect();
-//     const db = client.db(DATABASE_NAME);
-//     const collection = db.collection(COLLECTION_NAME);
-//     readJsonFile(req.body.jsonFile);
-//     console.log(res.body);
-//     res.end();
-//   } catch (e) {
-//     console.error(e?.name, e?.message);
-//     res.end();
-//   } finally {
-//     await client.close();
-//   }
-// });
-
-router.get("/api/connect", async (req, res, next) => {
-  try {
-    await client.connect();
-    res.type("json").json({
-      databaseStatus: {
-        ok: true,
-      },
-    });
-  } catch (e) {
-    console.error(e?.name, e?.message);
-    res.type("json").json({
-      databaseStatus: {
-        ok: false,
-      },
-    });
-  } finally {
-    await client.close();
+router.post(
+  "/api/upload",
+  upload.single("dbfile"),
+  async ({ file }, res, next) => {
+    // const products = JSON.parse(Buffer.from(file.buffer).toString());
+    const path = import.meta.dirname.replace("src\\router", file.path);
+    const jsonString = await readFile(path, { encoding: "utf8" });
+    const products = JSON.parse(jsonString);
+    // console.log(products);
+    try {
+      await client.connect();
+      const db = client.db(DATABASE_NAME);
+      const collection = db.collection(COLLECTION_NAME);
+      const result = await collection.insertMany(products);
+      console.log(result);
+      res
+        .status(200)
+        .send(
+          "<span>อัปโหลดไฟล์ฐานข้อมูลสำเร็จ <a href='http://localhost:5173/'>คลิกกลับไปที่หน้าหลัก</a></span>"
+        );
+    } catch (e) {
+      console.error(e?.name, e?.message);
+      res.end();
+    } finally {
+      await client.close();
+    }
   }
-});
+);
 
 export default router;
