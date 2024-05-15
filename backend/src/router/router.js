@@ -8,14 +8,13 @@ import { readFile } from "fs/promises";
 configDotenv();
 const { DATABASE_NAME, COLLECTION_NAME } = process.env;
 const router = Router();
-
 const upload = multer({
   storage: diskStorage({
     destination: (req, file, callback) => {
       callback(null, "src/database/uploads");
     },
     filename: (req, file, callback) => {
-      callback(null, file.fieldname + ".json");
+      callback(null, `${file.fieldname}-${new Date().getTime()}.json`);
     },
   }),
 });
@@ -128,9 +127,10 @@ router.post(
       const db = client.db(DATABASE_NAME);
       const collection = db.collection(COLLECTION_NAME);
       const result = await collection.insertMany(products);
-      console.log(result);
+      // console.log(result);
       res
         .status(200)
+        .type("html")
         .send(
           "<span>อัปโหลดไฟล์ฐานข้อมูลสำเร็จ <a href='http://localhost:5173/'>คลิกกลับไปที่หน้าหลัก</a></span>"
         );

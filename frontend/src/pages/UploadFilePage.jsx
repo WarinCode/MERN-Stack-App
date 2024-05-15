@@ -7,7 +7,6 @@ import InputField from "../components/InputField";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
-import { uploadFile } from "../utils/API";
 import { BsFiletypeJson } from "react-icons/bs";
 import { FaUpload } from "react-icons/fa";
 
@@ -35,6 +34,10 @@ const UploadFilePage = () => {
                 ดาวโหลด์ไฟล์ฐานข้อมูล
               </Link>
               แล้วนำไฟล์นั้นอัปโหลดเข้าสู่ฐานข้อมูล
+            </p>
+            <p>
+              ถ้าไม่สามารถอัปโหลดไฟล์ๆได้ให้เปลี่ยนไปใช้ MongoDBCompass
+              แล้วอัปโหลดไฟล์ข้อมูลแทน
             </p>
             <form
               method="POST"

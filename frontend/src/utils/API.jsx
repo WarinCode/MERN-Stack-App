@@ -81,7 +81,3 @@ export const search = async (apiUrl, path) => {
     return null;
   }
 };
-
-export const uploadFile = async (apiUrl, path, body) => {
-  return await insert(apiUrl, path, body);
-}
