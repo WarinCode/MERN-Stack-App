@@ -42,4 +42,4 @@
 
 --- 
 
-ดูการใช้งานเว็บไซต์ได้ที่ลิ้งนี้ [Google Drive](https://duckduckgo.com)
+ดูการใช้งานเว็บไซต์ได้ที่ลิ้งนี้ [Google Drive](https://drive.google.com/drive/folders/1P55vrRHlHXQ1r-4KSGHXxRXQ1MTwJDq_?usp=sharing)
