@@ -132,19 +132,16 @@ table {
 }
 
 table + footer {
+  width: auto;
   margin-top: 40px;
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .btn-next,
-  .btn-back {
-    position: absolute;
-  }
-
-  .btn-back {
-    left: 0;
-  }
-
-  .btn-next {
-    right: 0;
-  }
+  /* .btn-next,
+  .btn-back,
+  .btn-center {
+    margin: auto;
+  } */
 }

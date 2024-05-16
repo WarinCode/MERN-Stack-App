@@ -47,7 +47,7 @@ const EditProductPage = () => {
       setSearchSuccessful(false);
       setTimeout(
         () =>
-          toast.warn(
+          toast.error(
             `ไม่มีสินค้าที่มีเลขรหัส ${ISBNNumber} นี้อยู่ในฐานข้อมูล!`,
             notificationSettings
           ),

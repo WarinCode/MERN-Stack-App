@@ -52,7 +52,9 @@ button[disabled] {
 }
 
 .btn-back,
-.btn-next {
+.btn-next,
+.btn-center,
+.btn-empty {
   background: transparent;
   box-shadow: none;
 
@@ -66,5 +68,17 @@ button[disabled] {
   }
   .text {
     font-size: 18px;
+  }
+}
+
+.btn-empty {
+  pointer-events: none;
+}
+
+.btn-group {
+  .btn-center{
+    display: inline;
+    margin-inline: 20px;
+    width: auto;
   }
 }

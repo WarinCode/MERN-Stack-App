@@ -37,6 +37,7 @@ aside.sidebar {
     }
 
     .project-name {
+      text-transform: uppercase;
       font-size: clamp(24px, 30px, 32px);
       color: white;
       cursor: default;

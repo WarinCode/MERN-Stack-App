@@ -6,6 +6,7 @@ import HeaderCells from "./HeaderCells";
 import BookItem from "./BookItem";
 import NextButton from "./NextButton";
 import BackButton from "./BackButton";
+import CenterButton from "./CenterButton";
 import Outstock from "./Outstock";
 import { fetchBook } from "../utils/API";
 import { notificationSettings, headerCells } from "../data/data";
@@ -48,7 +49,7 @@ const Table = () => {
 
   const firstRenderComponent = useCallback(async () => {
     setLoading(true);
-    const data = await fetchBook(VITE_API_URL, "/product");
+    const data = await fetchBook(VITE_API_URL, "/data");
     if (data === null) {
       setIsConnectionFailed(true);
     } else {
@@ -58,7 +59,7 @@ const Table = () => {
       setIsReady(true);
       setIsConnectionFailed(false);
     }
-    setTimeout(() => setLoading(false), 1300);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   useEffect(() => {
@@ -80,13 +81,27 @@ const Table = () => {
     }
   }, [isConnectionFailed]);
 
+  const handlePreviousPage = useCallback(() => {
+    setIndex((prevIndex) => prevIndex - 1);
+    // scroll(0, 0);
+  }, []);
+
   const handleNextPage = useCallback(() => {
     setIndex((prevIndex) => prevIndex + 1);
     // scroll(0, 0);
   }, []);
 
-  const handlePreviousPage = useCallback(() => {
-    setIndex((prevIndex) => prevIndex - 1);
+  const handleFirstPage = useCallback(() => {
+    setIndex(0);
+    // scroll(0, 0);
+  }, []);
+
+  const handleLastPage = useCallback(() => {
+    setBooks((array) => {
+      let lastIndexOfArray = array.length - 1;
+      setIndex(lastIndexOfArray);
+      return array;
+    });
     // scroll(0, 0);
   }, []);
 
@@ -120,7 +135,7 @@ const Table = () => {
           </thead>
           <tbody>
             {isReady &&
-              books[index].map((item, idx) => (
+              books[index]?.map((item, idx) => (
                 <Row key={uuid()} className="rows">
                   <BookItem {...item} number={numbers[index][idx]} />
                 </Row>
@@ -134,11 +149,19 @@ const Table = () => {
           </tfoot>
         </table>
         <footer>
-          {index !== 0 && (
+          {index !== 0 ? (
             <BackButton text={"ย้อนกลับ"} handleClick={handlePreviousPage} />
+          ) : (
+            <div className="btn btn-empty"></div>
           )}
-          {index !== books.length - 1 && (
+          <CenterButton
+            handleClick1={handleFirstPage}
+            handleClick2={handleLastPage}
+          /> 
+          {index !== books.length - 1 ? (
             <NextButton text={"ถัดไป"} handleClick={handleNextPage} />
+          ) : (
+            <div className="btn btn-empty"></div>
           )}
         </footer>
       </>

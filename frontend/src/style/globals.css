@@ -85,6 +85,14 @@ a:link {
     letter-spacing: 0.4px;
     line-height: 32px;
     user-select: auto;
+    a {
+      color: blue;
+      margin-right: 2px;
+      &:hover{
+        text-decoration: underline;
+        color: blueviolet;
+      }
+    }
   }
 
   ol {

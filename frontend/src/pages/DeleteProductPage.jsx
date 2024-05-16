@@ -38,7 +38,7 @@ const DeleteProductPage = () => {
       setSearchSuccessful(false);
       setTimeout(
         () =>
-          toast.warn(
+          toast.error(
             `ไม่มีสินค้าที่มีเลขรหัส ${ISBNNumber} นี้อยู่ในฐานข้อมูล!`,
             notificationSettings
           ),
@@ -54,7 +54,7 @@ const DeleteProductPage = () => {
   const handleDelete = useCallback(async (product) => {
     setLoading(true);
     setText("กำลังลบสินค้า ...");
-    const path = `/delete-product/name=${product.productName}&ISBN=${product.ISBN}&id=${product._id}`;
+    const path = `/delete/name=${product.productName}&ISBN=${product.ISBN}&id=${product._id}`;
     const deletedCount = await remove(VITE_API_URL, path);
     setTimeout(() => {
       if (deletedCount === 1) {

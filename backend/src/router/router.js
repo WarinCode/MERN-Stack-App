@@ -5,8 +5,6 @@ import { ObjectId } from "mongodb";
 import multer, { diskStorage } from "multer";
 import { readFile } from "fs/promises";
 
-configDotenv();
-const { DATABASE_NAME, COLLECTION_NAME } = process.env;
 const router = Router();
 const upload = multer({
   storage: diskStorage({
@@ -14,12 +12,14 @@ const upload = multer({
       callback(null, "src/database/uploads");
     },
     filename: (req, file, callback) => {
-      callback(null, `${file.fieldname}-${new Date().getTime()}.json`);
+      callback(null, file.fieldname + ".json");
     },
   }),
 });
+configDotenv();
+const { DATABASE_NAME, COLLECTION_NAME } = process.env;
 
-router.get("/api/product", async (req, res, next) => {
+router.get("/api/data", async (req, res, next) => {
   try {
     await client.connect();
     const db = client.db(DATABASE_NAME);
@@ -77,7 +77,7 @@ router.put(
 );
 
 router.delete(
-  "/api/delete-product/name=:name&ISBN=:ISBN&id=:id",
+  "/api/delete/name=:name&ISBN=:ISBN&id=:id",
   async ({ params: { name, ISBN, id } }, res, next) => {
     try {
       await client.connect();
@@ -130,7 +130,6 @@ router.post(
       // console.log(result);
       res
         .status(200)
-        .type("html")
         .send(
           "<span>อัปโหลดไฟล์ฐานข้อมูลสำเร็จ <a href='http://localhost:5173/'>คลิกกลับไปที่หน้าหลัก</a></span>"
         );
