@@ -155,7 +155,6 @@ export const inputList = [
     inputOptions: {
       required: false,
       name: "author",
-      value: "บัญชา ปะสีละเตสัง",
     },
   },
   {
