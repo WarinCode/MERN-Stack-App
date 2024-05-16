@@ -192,7 +192,7 @@ a:link {
   justify-content: space-around;
   margin: 40px auto;
   padding: 30px;
-  background: linear-gradient(to bottom, #56b3d2, #247396, #278eb3);
+  background: linear-gradient(to bottom, #262626,  #121212);
   border-radius: 19px;
   box-shadow: -1px 6.5px 26px 5.5px #dddddd;
   .parent-of-card-img {
@@ -220,7 +220,7 @@ a:link {
     width: 100%;
 
     h3 {
-      color: #eff9fc;
+      color: #f6f6f6;
       font-weight: normal;
       line-height: 39px;
       font-style: italic;
