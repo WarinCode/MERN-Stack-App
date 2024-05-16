@@ -172,12 +172,6 @@ const InputField = ({
         id={id}
         placeholder={placeholder}
         ref={inputRef}
-        error={initialState.isError ? "true" : "false"}
-        // onClick={() => {
-        //   if(inputRef.current.id === "dbfile"){
-        //     dispatch({ type: "" })
-        //   }
-        // }}
         onFocus={() => dispatch({ type: `check-${id}` })}
         onChange={() => dispatch({ type: `check-${id}` })}
         onBlur={() => {

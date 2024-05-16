@@ -4,7 +4,6 @@ const headers = {
   }
 }
 
-/*  function สำหรับการดึงข้อมูลจากฐานข้อมูลใช้ใน method GET */
 export const fetchBook = async (apiUrl, path) => {
   try {
     const response = await fetch(`${apiUrl}${path}`);
@@ -16,7 +15,6 @@ export const fetchBook = async (apiUrl, path) => {
   }
 };
 
-/* function สำหรับการเพิ่มข้อมูลในฐานข้อมูลใช้ใน method POST  */
 export const insert = async (apiUrl, path, body) => {
   const options = {
     method: "POST",
@@ -33,7 +31,6 @@ export const insert = async (apiUrl, path, body) => {
   }
 };
 
-/* function สำหรับการอัปเดตแก้ไขสินค้าในฐานข้อมูลใช้ใน method PUT */
 export const update = async (apiUrl, path, body) => {
   const options = {
     method: "PUT",
@@ -50,7 +47,6 @@ export const update = async (apiUrl, path, body) => {
   }
 };
 
-/* function สำหรับการลบข้อมูลสินค้าในฐานข้อมูลใช้ใน method DELETE */
 export const remove = async (apiUrl, path) => {
   const options = {
     method: "DELETE",
@@ -66,7 +62,6 @@ export const remove = async (apiUrl, path) => {
   }
 };
 
-/* function สำหรับการตรวจสอบสินค้าว่ามีอยู่ในฐานข้อมูลหรือไม่ใช้ใน method GET */
 export const search = async (apiUrl, path) => {
   try {
     const response = await fetch(`${apiUrl}${path}`);

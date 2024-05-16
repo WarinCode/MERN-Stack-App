@@ -21,7 +21,7 @@ const Table = () => {
   const [isReady, setIsReady] = useState(false);
   const [isConnectionFailed, setIsConnectionFailed] = useState(false);
   const { VITE_API_URL } = import.meta.env;
-  const MAX_DISPLAY_BOOKS = 4;
+  const MAX_BOOK = 4;
 
   const formatArray = useCallback((array) => {
     const resultArray = {
@@ -33,7 +33,7 @@ const Table = () => {
     for (let i = 0; i < array.length; i++) {
       resultArray.books.push(array[i]);
       resultArray.numbers.push(i + 1);
-      if (resultArray.books.length === MAX_DISPLAY_BOOKS) {
+      if (resultArray.books.length === MAX_BOOK) {
         resultArray.books2D.push(resultArray.books);
         resultArray.numbers2D.push(resultArray.numbers);
         resultArray.books = [];
@@ -135,7 +135,7 @@ const Table = () => {
           </thead>
           <tbody>
             {isReady &&
-              books[index]?.map((item, idx) => (
+              books[index].map((item, idx) => (
                 <Row key={uuid()} className="rows">
                   <BookItem {...item} number={numbers[index][idx]} />
                 </Row>
