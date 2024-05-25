@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useCallback ,useEffect } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { string, func, object } from "prop-types";
 import { isEmptyString, isSpecialSymbol, isBlank } from "../utils/functions";
@@ -9,13 +9,14 @@ const InputField = ({
   className,
   labelname,
   id,
+  list,
   inputType,
   placeholder,
   inputOptions,
   inputRef,
   setIsValid,
 }) => {
-  const reducer = (state, action) => {
+  const inputReducer = useCallback((state, action) => {
     switch (action.type) {
       case "check-productName":
         if (inputRef.current.value.length < 3) {
@@ -156,8 +157,8 @@ const InputField = ({
       default:
         return initialState;
     }
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
+  }, []);
+  const [state, dispatch] = useReducer(inputReducer, initialState);
 
   useEffect(() => {
     setIsValid(state.isError ? false : true);
@@ -170,6 +171,7 @@ const InputField = ({
         className={state.isError ? "input-error" : ""}
         type={inputType}
         id={id}
+        list={list}
         placeholder={placeholder}
         ref={inputRef}
         onFocus={() => dispatch({ type: `check-${id}` })}
@@ -196,6 +198,7 @@ InputField.propTypes = {
   className: string,
   labelname: string,
   id: string,
+  list: string,
   inputType: string.isRequired,
   placeholder: string.isRequired,
   inputOptions: object,

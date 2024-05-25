@@ -102,6 +102,7 @@ const DeleteProductPage = () => {
                   setIsValid={setIsValid}
                   inputRef={ISBNRef}
                   handleSubmit={handleSubmit}
+                  dataListId={"ISBNList"}
                 />
                 <WaitingToSearch text={"ค้นหาสินค้าที่คุณต้องการจะลบ"} />
               </>

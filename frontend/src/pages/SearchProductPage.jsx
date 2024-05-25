@@ -69,6 +69,7 @@ const SearchProductPage = () => {
                   setIsValid={setIsValid}
                   inputRef={ISBNRef}
                   handleSubmit={handleSubmit}
+                  dataListId={"ISBNList"}
                 />
                 <WaitingToSearch
                   text={

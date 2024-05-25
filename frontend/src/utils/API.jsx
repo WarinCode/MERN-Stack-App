@@ -76,3 +76,5 @@ export const search = async (apiUrl, path) => {
     return null;
   }
 };
+
+export const fetchISBNs = async (apiUrl, path) => await fetchBook(apiUrl, path);

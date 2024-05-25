@@ -142,4 +142,19 @@ router.post(
   }
 );
 
+router.get("/api/get-all-isbns", async (req, res, next) => {
+  try {
+    await client.connect();
+    const db = client.db(DATABASE_NAME);
+    const collection = db.collection(COLLECTION_NAME);
+    const result = (await collection.find({}).toArray()).map((doc) => doc.ISBN);
+    res.status(200).type("json").json(result);
+  } catch (e) {
+    console.error(e?.name, e?.message);
+    res.end();
+  } finally {
+    await client.close();
+  }
+})
+
 export default router;
