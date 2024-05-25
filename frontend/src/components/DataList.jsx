@@ -11,7 +11,6 @@ const DataList = ({ id }) => {
     (async () => {
         const ISBNData = await fetchISBNs(VITE_API_URL, "/get-all-isbns");
         setISBNs(ISBNData);
-        // console.log(ISBNs);
     })();
 
     return () => {

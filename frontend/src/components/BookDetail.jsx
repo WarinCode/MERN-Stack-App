@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { string, number } from "prop-types";
 import { handleError } from "../utils/functions";
+import ViewImage from "./ViewImage";
 
 const BookDetail = ({
   _id,
@@ -16,13 +17,18 @@ const BookDetail = ({
   return (
     <div className="book-card" id={_id}>
       <div className="parent-of-card-img">
-        <img
-          className="card-img"
+        <ViewImage
+          element={
+            <img
+              className="card-img"
+              src={img}
+              alt="ไม่มีรูปภาพ"
+              loading="lazy"
+              ref={imgRef}
+              onError={() => handleError(imgRef)}
+            />
+          }
           src={img}
-          alt="ไม่มีรูปภาพ"
-          loading="lazy"
-          ref={imgRef}
-          onError={() => handleError(imgRef)}
         />
       </div>
       <div className="line"></div>

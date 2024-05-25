@@ -1,6 +1,7 @@
 import { string, number } from "prop-types";
 import { useRef } from "react";
 import { handleError } from "../utils/functions";
+import ViewImage from "./ViewImage";
 
 const BookItem = ({ productName, productPrice, img, ISBN, remain, number }) => {
   const imgRef = useRef(null);
@@ -10,13 +11,18 @@ const BookItem = ({ productName, productPrice, img, ISBN, remain, number }) => {
       <td className="number">{number}</td>
       <td className="product-name">{productName}</td>
       <td className="parent-of-product-img">
-        <img
+        <ViewImage
+          element={
+            <img
+              src={img}
+              className="product-img"
+              alt="ไม่มีรูปภาพ"
+              loading="lazy"
+              ref={imgRef}
+              onError={() => handleError(imgRef)}
+            />
+          }
           src={img}
-          className="product-img"
-          alt="ไม่มีรูปภาพ"
-          loading="lazy"
-          ref={imgRef}
-          onError={() => handleError(imgRef)}
         />
       </td>
       <td className="ISBN">{ISBN}</td>
